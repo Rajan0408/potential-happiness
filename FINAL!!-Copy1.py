@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[29]:
 
 
 import cv2 
@@ -9,16 +9,47 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[19]:
+# In[60]:
 
 
-image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_9.png') 
+name=input("Enter name of image : ")
+#print(name)
+
+
+# In[61]:
+
+
+if name == 'tmp1':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_1.png') 
+elif name == 'tmp2':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_2.png') 
+elif name == 'tmp3':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_3.png')
+elif name == 'tmp4':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_4.png') 
+elif name == 'tmp5':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_5.png') 
+elif name == 'tmp6':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_6.png') 
+elif name == 'tmp7':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_7.png') 
+elif name == 'tmp8':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_8.png') 
+elif name == 'tmp9':
+    image = cv2.imread(r'C:\Users\LENOVO\Desktop\New folder\Images\tmp_9.png') 
+else:
+    print("NOT FOUND!!")
+
+
+# In[63]:
+
+
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
-cv2.imshow("gray",gray)
+#cv2.imshow("gray",gray)
 cv2.waitKey(0)
 
 
-# In[20]:
+# In[64]:
 
 
 def findContr(image):
@@ -27,7 +58,7 @@ def findContr(image):
     return contours
 
 
-# In[21]:
+# In[65]:
 
 
 def checkinside(image):
@@ -37,11 +68,11 @@ def checkinside(image):
             distance = abs(int(cv2.pointPolygonTest((i),(320,250),True)))
             if distance is not []:
                 return distance
-print(checkinside(image))
+#print(checkinside(image))
 chek=checkinside(image)
 
 
-# In[22]:
+# In[66]:
 
 
 img=cv2.Canny(image,1,1)
@@ -55,13 +86,13 @@ def find_nearest_white(img, target):
     point.append(nonzero[nearest_index][0][1])
     return nonzero[nearest_index]
 
-
-print (find_nearest_white(img, TARGET))
+find_nearest_white(img, TARGET)
+#print (find_nearest_white(img, TARGET))
 x=point[0]
 y=point[1]
 
 
-# In[23]:
+# In[67]:
 
 
 contour1=findContr(image)
@@ -83,6 +114,12 @@ def second_smallest(numbers):
             m2 = x
     return m2
 print("nearest distance is :",second_smallest(a))
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
