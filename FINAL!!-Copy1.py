@@ -3,7 +3,7 @@
 
 # In[29]:
 
-
+#importing diffrent modules
 import cv2 
 import numpy as np 
 import matplotlib.pyplot as plt
@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 
 # In[60]:
 
-
-name=input("Enter name of image : ")
+#for cheking name of images
+name=input("Enter name of image : ") 
 #print(name)
 
 
@@ -43,7 +43,7 @@ else:
 
 # In[63]:
 
-
+#converting image to greyscale
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
 #cv2.imshow("gray",gray)
 cv2.waitKey(0)
@@ -51,7 +51,7 @@ cv2.waitKey(0)
 
 # In[64]:
 
-
+#finding contours
 def findContr(image):
     edged = cv2.Canny(gray, 1, 2) 
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE) 
@@ -60,7 +60,7 @@ def findContr(image):
 
 # In[65]:
 
-
+#checking if midpoint lies within shop
 def checkinside(image):
     for i in findContr(image):
         check = cv2.pointPolygonTest((i),(320,250),False)
@@ -75,8 +75,8 @@ chek=checkinside(image)
 # In[66]:
 
 
-img=cv2.Canny(image,1,1)
-point=[]
+img=cv2.Canny(image,1,1) #generating edge using Canny()
+point=[] #point of nearest contour is stored in point[]
 TARGET = (320,250)
 def find_nearest_white(img, target):
     nonzero = cv2.findNonZero(img)
@@ -104,7 +104,7 @@ for i in contour1:
     
     dist = abs(cv2.pointPolygonTest(i,(x,y),True))
     a.append(dist)
-
+#getting nearest distance by excluding 0 
 def second_smallest(numbers):
     m1, m2 = float('inf'), float('inf')
     for x in numbers:
